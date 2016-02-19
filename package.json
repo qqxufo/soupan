@@ -1,0 +1,19 @@
+{
+  "name": "soupan",
+  "version": "1.0.0",
+  "description": "search for wangpan",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "qqxufo",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "connect-flash": "^0.1.1",
+    "connect-redis": "^3.0.2",
+    "cookie-parser": "^1.4.1",
+    "express-session": "^1.13.0"
+  },
+  "devDependencies": {}
+}

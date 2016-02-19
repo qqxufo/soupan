@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/soupan.css">
+</head>
+<body>
+<div id="header">
+  <div class="content">
+    <div class="search_bar">
+      <div class="search_bar">
+        <form action="/soupan/search" class="form-inline" id="search_form" onsubmit="submitSearchForm()">
+          <input type="hidden" name="start" id="start" value="0">
+          <input type="hidden" name="limit" id="limit" value="10">
+          <img src="/images/logo-sm.png" alt="SouPan最懂你的网盘搜索引擎">
+          <input type="text" name="key" id="key" value="<%= sKey %>" class="form-control search_input"
+                 placeholder="搜资源，你懂的..">
+          <button type="submit" class="btn btn-success-outline search_btn">搜盘Sou一下</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="middle">
+  <div class="content">
+    <div class="g-res">
+      找到约 <%= data.reDetail.resultCount %> 条结果（用时 <%= data.reDetail.searchResultTime %> 秒） <br>
+    </div>
+    <div id="g-load" hidden>
+      <div id="loading">
+        <img src="/images/loading.gif"/> 数据加载中，请稍后...
+      </div>
+    </div>
+    <div id="g-con">
+      <% data.reData.forEach(function(item){ %>
+      <div class="g">
+        <span class="title"><a href="<%- item.unescapedUrl %>"><%- item.title %></a></span><br>
+        <span class="info"><%- item.content %></span><br>
+        <span class="smUrl"><%- item.smUrl %></span>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+
+  <div class="page-btn">
+    <div class="btn-group">
+      <% if(data.reDetail.pages && data.reDetail.pages.length > 1){
+        for(var i = 1; i <= data.reDetail.pages.length; i++){ %>
+        <button type="button" value="<%= i %>" class="btn btn-success-outline c-btn"><%= i %></button>
+      <% }} %>
+    </div>
+  </div>
+
+</div>
+<div id="footer">
+  <div class="content">
+    <div class="statement">
+      声明：本站搜索结果来自Google自定义搜索，不存储任何网盘内容，只提供信息检索服务。如果有侵犯的地方，可以联系站长，站长将会在第一时间进行整改。
+    </div>
+  </div>
+</div>
+
+<script src="/js/jquery.min.js"></script>
+<script>
+  function submitSearchForm() {
+    var key = $('#key').val();
+    if (key == '' || key.length == 0) {
+      alert('少侠，请输入搜索内容！')
+      return false;
+    }
+    $("#g-load").removeAttr('hidden');
+  }
+  $('.c-btn').click(function () {
+    $("#g-load").removeAttr('hidden');
+    $.post('/soupan/search', {
+      start: $(this).val(),
+      limit: $('#limit').val(),
+      key: $('#key').val()
+    }, function (data) {
+      if (data != null) {
+        updateSearchData(data);
+        $("#g-load").attr('hidden', 'hidden');
+      } else {
+        alert('没有了..');
+      }
+    }, 'json');
+  });
+  function updateSearchData(data) {
+    $("#g-con").empty();
+    data.reData.forEach(function (item) {
+      var itData = '<div class="g">' +
+        '<span class="title"><a href="' + item.unescapedUrl + '">' + item.title + '</a></span><br>' +
+        '<span class="info">' + item.content + '</span><br>' +
+        '<span class="smUrl">' + item.smUrl + '</span></div>';
+      $("#g-con").append(itData);
+    });
+  }
+</script>
+<script src="/js/soupan.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+<div id="header">
+  <div class="content">
+
+  </div>
+</div>
+<div id="middle">
+  <div class="content">
+    <div class="logo">
+      <img src="/images/logo.png" alt="SouPan最懂你的网盘搜索引擎">
+    </div>
+    <div class="search_bar">
+      <form action="/soupan/search" class="form-inline">
+        <input type="hidden" name="start" value="0">
+        <input type="hidden" name="limit" value="10">
+        <input type="text" name="key" class="form-control search_input" placeholder="搜资源，你懂的..">
+        <button type="submit" class="btn btn-success-outline search_btn">搜盘Sou一下</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div id="footer">
+  <div class="content">
+    <div class="statement">
+      声明：本站搜索结果来自Google自定义搜索，不存储任何网盘内容，只提供信息检索服务。如果有侵犯的地方，可以联系站长，站长将会在第一时间进行整改。
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
