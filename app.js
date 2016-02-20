@@ -1,11 +1,6 @@
 var path = require('path');
-
 var express = require('express');
-var session = require('express-session');
-var redisStore = require('connect-redis')(session);
-var flash = require('connect-flash');
 var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
 
 var searchData = require('./util/searchData');
 var SearchUrl = require('./util/searchUrl');
@@ -23,14 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
-app.use(session({
-  store: new redisStore(),
-  secret: config.cookieSecret,
-  cookie: {maxAge: 1000 * 60},
-  key: config.cookieName
-}));
-app.use(flash());
+
 
 app.get('/', function (req, res) {
   res.render('index', {

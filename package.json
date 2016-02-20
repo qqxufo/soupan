@@ -1,19 +1,26 @@
 {
   "name": "soupan",
   "version": "1.0.0",
-  "description": "search for wangpan",
-  "main": "index.js",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "request": "^2.69.0",
+    "express": "^4.13.4",
+    "ejs": "^2.4.1"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "qqxufo",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.15.0",
-    "connect-flash": "^0.1.1",
-    "connect-redis": "^3.0.2",
-    "cookie-parser": "^1.4.1",
-    "express-session": "^1.13.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qqxufo/soupan.git"
   },
-  "devDependencies": {}
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qqxufo/soupan/issues"
+  },
+  "homepage": "https://github.com/qqxufo/soupan#readme"
 }
