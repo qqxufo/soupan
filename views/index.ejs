@@ -18,7 +18,7 @@
       <a href="/soupan"><img src="/images/logo.png" alt="SouPan最懂你的网盘搜索引擎"></a>
     </div>
     <div class="search_bar">
-      <form action="/soupan/search" class="form-inline" onsubmit="submitSearchForm()">
+      <form action="/soupan/search" class="form-inline" onsubmit="return submitSearchForm()">
         <input type="hidden" name="start" value="0">
         <input type="hidden" name="limit" value="10">
         <input type="text" id="key" name="key" class="form-control search_input" placeholder="搜资源，你懂的..">
@@ -42,6 +42,7 @@
       alert('少侠，请输入搜索内容！')
       return false;
     }
+    return true;
   }
 </script>
 </body>
