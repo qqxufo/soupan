@@ -15,13 +15,13 @@
 <div id="middle">
   <div class="content">
     <div class="logo">
-      <img src="/images/logo.png" alt="SouPan最懂你的网盘搜索引擎">
+      <a href="/soupan"><img src="/images/logo.png" alt="SouPan最懂你的网盘搜索引擎"></a>
     </div>
     <div class="search_bar">
-      <form action="/soupan/search" class="form-inline">
+      <form action="/soupan/search" class="form-inline" onsubmit="submitSearchForm()">
         <input type="hidden" name="start" value="0">
         <input type="hidden" name="limit" value="10">
-        <input type="text" name="key" class="form-control search_input" placeholder="搜资源，你懂的..">
+        <input type="text" id="key" name="key" class="form-control search_input" placeholder="搜资源，你懂的..">
         <button type="submit" class="btn btn-success-outline search_btn">搜盘Sou一下</button>
       </form>
     </div>
@@ -34,7 +34,15 @@
     </div>
   </div>
 </div>
-
-
+<script src="/js/jquery.min.js"></script>
+<script>
+  function submitSearchForm() {
+    var key = $('#key').val();
+    if (key == '' || key.length == 0) {
+      alert('少侠，请输入搜索内容！')
+      return false;
+    }
+  }
+</script>
 </body>
 </html>
